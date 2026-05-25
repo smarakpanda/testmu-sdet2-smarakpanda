@@ -1,0 +1,16 @@
+{
+  "qa": {
+      "username": "qa_user",
+      "password": "qa_pass"
+  },
+
+  "stage": {
+    "username": "qa_user",
+    "password": "qa_pass"
+  },
+
+  "prod": {
+      "username": "qa_user",
+      "password": "qa_pass"
+  }
+}

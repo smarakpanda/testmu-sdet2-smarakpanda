@@ -1,0 +1,19 @@
+{
+  "qa": {
+      "username": "qa_user",
+      "password": "qa_pass",
+      "expected_title": "Dashboard"
+  },
+
+  "stage": {
+    "username": "qa_user",
+    "password": "qa_pass",
+    "expected_title": "Dashboard"
+  },
+
+  "prod": {
+      "username": "qa_user",
+      "password": "qa_pass",
+      "expected_title": "Dashboard"
+  }
+}

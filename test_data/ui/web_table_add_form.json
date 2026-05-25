@@ -1,0 +1,18 @@
+{
+  "valid_user": {
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "john.doe@test.com",
+    "age": "30",
+    "salary": "50000",
+    "department": "QA"
+  },
+  "invalid_user": {
+    "first_name": "",
+    "last_name": "Doe",
+    "email": "bademail",
+    "age": "-1",
+    "salary": "0",
+    "department": ""
+  }
+}
