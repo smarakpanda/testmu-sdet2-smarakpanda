@@ -23,7 +23,7 @@ class Tests:
     logger = Logger("Tests")
 
     def test_login_ui(self,page):
-        print(f" form data: {get_web_table_form_data("valid_user")}")
+        # print(f" form data: {get_web_table_form_data("valid_user")}")
         home_page = HomePage(page)
         home_page_title = home_page.get_title()
         logger.info(f"Home Page Title: {home_page_title}")
