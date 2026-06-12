@@ -1,4 +1,5 @@
 import time
+from xml.sax.xmlreader import Locator
 
 
 class BasePage:
@@ -10,13 +11,15 @@ class BasePage:
         self.page.save_screenshot(f"screenshot_{step_name}_{timestamp}.png")
 
     def navigate(self, url):
-        self.page.goto(url)
-        self.take_screenshot()
+        self.page.goto(url,wait_until="load")
 
     def click(self, locator,retries=3):
         for attempts in range(retries):
             try:
-                self.page.locator(locator).click()
+                if isinstance(locator,str):
+                    self.page.locator(locator).click()
+                elif isinstance(locator,Locator):
+                    self.page.locator.click()
                 break
             except Exception as e:
                 if attempts < retries - 1:

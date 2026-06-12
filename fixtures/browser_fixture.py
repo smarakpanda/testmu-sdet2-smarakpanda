@@ -11,7 +11,7 @@ def playwright():
 
 
 @pytest.fixture(scope="session", params=["chromium", "firefox", "webkit"])
-def browser(playwright, request):
+def browser_2(playwright, request):
     browser_name = request.param
 
     # optional override from .env (if you still want single browser mode)
@@ -28,12 +28,23 @@ def browser(playwright, request):
     browser.close()
 
 
+@pytest.fixture(scope="session")
+def browser(playwright):
+    browser_name = get_value_from_config("BROWSERS")
+    headless = get_value_from_config("headless").lower() == "true"
+
+    browser = launch_browser(playwright, browser_name, headless)
+
+    yield browser
+    browser.close()
+
+
 @pytest.fixture(scope="function")
 def page(browser,request):
     context = browser.new_context()
     context.tracing.start(screenshots=True, snapshots=True)
     page = context.new_page()
-    page.goto(get_value_from_config("base_url"))
+    page.goto(get_value_from_config("AMAZON_URL"))
     yield page
     test_name = request.node.name
     context.tracing.stop(path=f"traces/{test_name}_{browser.browser_type.name}.zip")
