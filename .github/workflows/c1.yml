@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          pip install pytest-html playwright
+          pip install pytest-html pytest-xdist playwright
           playwright install-deps
 
       - name: Install Playwright browsers
@@ -27,7 +27,7 @@ jobs:
 
       - name: Run tests
         run: |
-          pytest -v -s \
+          pytest -n 2 -v -s \
           --log-cli-level=INFO \
           --html=report.html --self-contained-html
 
